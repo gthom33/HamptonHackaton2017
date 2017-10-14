@@ -38,11 +38,11 @@ public class BubbleDrop extends GameScreen {
     @Override
     public void initialize() {
         // load the drop sound effect and the rain background "music"
-        crunchSound = Gdx.audio.newSound(Gdx.files.internal("carrot_crunch.wav"));
+        crunchSound = Gdx.audio.newSound(Gdx.files.internal("carrotNom.wav"));
         crunchSound.setVolume(150,150f);
         //burpSound = Gdx.audio.newSound(Gdx.files.internal("loud_burp.mp3"));
         workoutMusic = Gdx.audio.newMusic(Gdx.files.internal("body_lang.mp3"));
-        workoutMusic.setVolume(0.10f);
+        workoutMusic.setVolume(0.5f);
 
         // start the playback of the background music immediately
         workoutMusic.setLooping(true);
