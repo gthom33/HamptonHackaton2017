@@ -136,10 +136,7 @@ public class BubbleDrop extends GameScreen {
                     food.setPosition(food.getX(), food.getY() - dropSpeed * 3);
 
 
-                    if (food.getY() + 64 < 0) {
-                        gameOn = false;
-                        break;
-                    }
+
 
 
                     if (ActorUtils.actorsCollided(food, hippo)) {
