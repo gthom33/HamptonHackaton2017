@@ -56,9 +56,9 @@ public class BubbleDrop extends GameScreen {
         // Clear any raindrops from previous games
 
         //Change raindrop to cheeseburger?
-        for (Actor raindrop : stage.getActors()) {
-            if (raindrop.getName() != null && raindrop.getName().equals("drop")) {
-                raindrop.remove();
+        for (Actor cheeseburger : stage.getActors()) {
+            if (cheeseburger.getName() != null && cheeseburger.getName().equals("drop2")) {
+                cheeseburger.remove();
             }
         }
 
