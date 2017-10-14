@@ -31,18 +31,18 @@ public class BubbleDrop extends GameScreen {
     private boolean gameOn = false;
 
     //private Sound dropSound;
-    private Sound mmmSound;
+    private Sound crunchSound;
     //private Bad burpSound;
     private Music workoutMusic;
 
     @Override
     public void initialize() {
         // load the drop sound effect and the rain background "music"
-        mmmSound = Gdx.audio.newSound(Gdx.files.internal("mmm_Girl.wav"));
-        mmmSound.setVolume(150,150f);
+        crunchSound = Gdx.audio.newSound(Gdx.files.internal("carrotNom.wav"));
+        crunchSound.setVolume(150,150f);
         //burpSound = Gdx.audio.newSound(Gdx.files.internal("loud_burp.mp3"));
         workoutMusic = Gdx.audio.newMusic(Gdx.files.internal("body_lang.mp3"));
-        workoutMusic.setVolume(0.10f);
+        workoutMusic.setVolume(0.5f);
 
         // start the playback of the background music immediately
         workoutMusic.setLooping(true);
@@ -119,9 +119,15 @@ public class BubbleDrop extends GameScreen {
                         break;
                     }
 
+<<<<<<< HEAD
                     if (ActorUtils.actorsCollided(carrot, bucket)) {
                         carrot.remove();
                         mmmSound.play();
+=======
+                    if (ActorUtils.actorsCollided(raindrop, bucket)) {
+                        raindrop.remove();
+                        crunchSound.play();
+>>>>>>> 32e3119e8ab25b65e9d10deef0605df9dab8e3a8
                         score++;
                         if (score % 10 == 0) {
                             nextLevel();

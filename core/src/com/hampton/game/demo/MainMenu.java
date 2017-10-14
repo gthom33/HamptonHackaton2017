@@ -12,6 +12,7 @@ import com.hampton.game.utils.ActorUtils;
  */
 
 public class MainMenu extends GameScreen {
+    private Actor title;
    private Actor buttonFromImage;
     private Actor frontPage;
     private String nextScreenName;
@@ -27,6 +28,7 @@ public class MainMenu extends GameScreen {
 
     @Override
     public void createActors() {
+
         frontPage= ActorUtils.createActorFromImage("eating.jpg");
         frontPage.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
         stage.addActor(frontPage);
@@ -36,6 +38,12 @@ public class MainMenu extends GameScreen {
                 stage.getViewport().getScreenWidth()/2 - buttonFromImage.getWidth()/2,
                 (-buttonFromImage.getHeight() / 2) + 100);
         stage.addActor(buttonFromImage);
+        title=ActorUtils.createActorFromImage("main.jpg");
+        title.setSize(200,150);
+        title.setPosition(
+                stage.getViewport().getScreenWidth()/2 + title.getWidth()/2,
+                (title.getHeight() / 2) + 250);
+        stage.addActor(title);
     }
 
     @Override
