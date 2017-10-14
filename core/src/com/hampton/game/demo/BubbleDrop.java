@@ -172,7 +172,7 @@ public class BubbleDrop extends GameScreen {
 
     private void nextLevel() {
         dropSpeed++;
-        newDropInterval = 200 / dropSpeed;
+        newDropInterval = 1000 / dropSpeed;
     }
 
     private void loseGame() {
