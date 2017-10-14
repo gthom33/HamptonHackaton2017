@@ -32,7 +32,7 @@ public class BubbleDrop extends GameScreen {
 
 
     private Sound crunchSound;
-    //private Bad burpSound;
+    //private Sound burpSound;
     private Music workoutMusic;
 
     @Override
@@ -80,7 +80,7 @@ public class BubbleDrop extends GameScreen {
         background = ActorUtils.createActorFromImage("Restaurant.jpg");
         background.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
         hippo = ActorUtils.createActorFromImage("hippo.png");
-        hippo.setSize(250,250);
+        hippo.setSize(200,200);
         stage.addActor(background);
         stage.addActor(hippo);
     }
