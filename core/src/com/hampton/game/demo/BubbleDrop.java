@@ -101,28 +101,28 @@ public class BubbleDrop extends GameScreen {
             hippo.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
-            Actor drop = ActorUtils.createActorFromImage("carrot.png");drop.setSize(100, 100);
-            drop.setPosition(
-                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop.getWidth()),
+            Actor carrot = ActorUtils.createActorFromImage("carrot.png");carrot.setSize(100, 100);
+            carrot.setPosition(
+                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)carrot.getWidth()),
                     stage.getViewport().getScreenHeight());
-            drop.setName("drop");
-          stage.addActor(drop);
+            carrot.setName("carrot");
+          stage.addActor(carrot);
         }
             if (gameOn && numFrames % newDropInterval == 30) {
-                Actor drop2 = ActorUtils.createActorFromImage("Cheeseburger.png");drop2.setSize(100, 100);
-                drop2.setPosition(
-                        randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop2.getWidth()),
+                Actor cheeseburger = ActorUtils.createActorFromImage("Cheeseburger.png");cheeseburger.setSize(100, 100);
+                cheeseburger.setPosition(
+                        randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)cheeseburger.getWidth()),
                         stage.getViewport().getScreenHeight());
-                drop2.setName("drop2");
-                stage.addActor(drop2);
+                cheeseburger.setName("cheeseburger");
+                stage.addActor(cheeseburger);
             }
 
         if (gameOn && numFrames % pauseTime == 0) {
             // move the carrots, remove any that are beneath the bottom edge of
-            // the screen or that hit the bucket. In the later case we play back
+            // the screen or that hit the hippo. In the later case we play back
             // a sound effect as well.
             for (Actor carrot : stage.getActors()) {
-                if ((carrot.getName() != null && (carrot.getName().equals("drop") || carrot.getName().equals("drop2"))))  {
+                if ((carrot.getName() != null && (carrot.getName().equals("carrot") || carrot.getName().equals("cheeseburger"))))  {
                     carrot.setPosition(carrot.getX(), carrot.getY() - dropSpeed*3);
 
                     if (carrot.getY() + 64 < 0) {
@@ -164,7 +164,7 @@ public class BubbleDrop extends GameScreen {
     private void loseGame() {
         workoutMusic.stop();
         for (Actor carrot : stage.getActors()) {
-            if (carrot.getName() != null && carrot.getName().equals("drop")) {
+            if (carrot.getName() != null && carrot.getName().equals("carrot")) {
                 carrot.remove();
             }
         }
