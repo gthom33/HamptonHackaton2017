@@ -80,14 +80,15 @@ public class BubbleDrop extends GameScreen {
     public void createActors() {
         background = ActorUtils.createActorFromImage("Restaurant.jpg");
         background.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
+<<<<<<< HEAD
         //bucket = ActorUtils.createActorFromImage("bucket.png");
         hippo = ActorUtils.createActorFromImage("hippo.png");
         //bucket.setPosition(20,20);
         hippo.setSize(40, 40);
-
-        hippo = ActorUtils.createActorFromImage("hippo.png");
-        hippo.setPosition(20, 20);
-
+=======
+        bucket = ActorUtils.createActorFromImage("hippo.png");
+        bucket.setPosition(20, 20);
+>>>>>>> 5e30287099f73663d4fce160a13f9dbb036194f1
         stage.addActor(background);
         //stage.addActor(bucket);
         stage.addActor(hippo);
