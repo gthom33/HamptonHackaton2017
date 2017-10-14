@@ -20,7 +20,6 @@ import java.util.Random;
 public class BubbleDrop extends GameScreen {
 
     private Random randomNumberGenerator = new Random();
-    //private Actor bucket;
     private Actor hippo;
     private Actor background;
     private Label scoreLabel;
@@ -80,17 +79,9 @@ public class BubbleDrop extends GameScreen {
     public void createActors() {
         background = ActorUtils.createActorFromImage("Restaurant.jpg");
         background.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
-<<<<<<< HEAD
-        //bucket = ActorUtils.createActorFromImage("bucket.png");
         hippo = ActorUtils.createActorFromImage("hippo.png");
-        //bucket.setPosition(20,20);
-        hippo.setSize(40, 40);
-=======
-        bucket = ActorUtils.createActorFromImage("hippo.png");
-        bucket.setPosition(20, 20);
->>>>>>> 5e30287099f73663d4fce160a13f9dbb036194f1
+        hippo.setSize(250,250);
         stage.addActor(background);
-        //stage.addActor(bucket);
         stage.addActor(hippo);
     }
 
@@ -106,7 +97,6 @@ public class BubbleDrop extends GameScreen {
     protected void calledEveryFrame() {
         // process user input
         if (Gdx.input.isTouched()) {
-            //bucket.setX(Gdx.input.getX() - 64 / 2);
             hippo.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
@@ -117,7 +107,7 @@ public class BubbleDrop extends GameScreen {
             drop.setName("drop");
           stage.addActor(drop);
         }
-            if (gameOn && numFrames % newDropInterval == 30) {
+            if (gameOn && numFrames % newDropInterval == 0) {
                 Actor drop2 = ActorUtils.createActorFromImage("Cheeseburger.png");drop2.setSize(100, 100);
                 drop2.setPosition(
                         randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop2.getWidth()),
@@ -140,7 +130,7 @@ public class BubbleDrop extends GameScreen {
                     }
 
 
-                    if (ActorUtils.actorsCollided(carrot, /*bucket*/ hippo)) {
+                    if (ActorUtils.actorsCollided(carrot,  hippo)) {
                         carrot.remove();
                         crunchSound.play();
                         score++;
