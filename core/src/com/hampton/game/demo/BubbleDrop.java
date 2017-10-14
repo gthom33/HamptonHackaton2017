@@ -97,6 +97,7 @@ public class BubbleDrop extends GameScreen {
     protected void calledEveryFrame() {
         // process user input
         if (Gdx.input.isTouched()) {
+            //bucket.setX(Gdx.input.getX() - 64 / 2);
             hippo.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
@@ -107,7 +108,7 @@ public class BubbleDrop extends GameScreen {
             drop.setName("drop");
           stage.addActor(drop);
         }
-            if (gameOn && numFrames % newDropInterval == 0) {
+            if (gameOn && numFrames % newDropInterval == 30) {
                 Actor drop2 = ActorUtils.createActorFromImage("Cheeseburger.png");drop2.setSize(100, 100);
                 drop2.setPosition(
                         randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop2.getWidth()),
@@ -130,7 +131,7 @@ public class BubbleDrop extends GameScreen {
                     }
 
 
-                    if (ActorUtils.actorsCollided(carrot,  hippo)) {
+                    if (ActorUtils.actorsCollided(carrot, /*bucket*/ hippo)) {
                         carrot.remove();
                         crunchSound.play();
                         score++;
