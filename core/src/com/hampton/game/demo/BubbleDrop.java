@@ -131,14 +131,14 @@ public class BubbleDrop extends GameScreen {
                     }
 
 
-                    if (ActorUtils.actorsCollided(carrot, /*bucket*/ hippo)) {
+                    if (ActorUtils.actorsCollided(carrot, hippo)) {
                         carrot.remove();
                         crunchSound.play();
                         score++;
                         if (score % 10 == 0) {
                             nextLevel();
                         }//else (ActorUtils.actorsCollided(cheeseburger, hippo)){
-                            //raindrop.remove();
+                            //cheeseburger.remove();
                             //burpSound.play();
                             //score++;
                     }
