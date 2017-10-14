@@ -57,4 +57,9 @@ public class MainMenu extends GameScreen {
     protected void calledEveryFrame() {
 
     }
+
+    @Override
+    public void update(int width, int height) {
+
+    }
 }

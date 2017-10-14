@@ -30,6 +30,7 @@ public class HamptonHack extends ApplicationAdapter {
 	public void resize (int width, int height) {
 		Stage stage = stateManager.getCurrentGameScreen().getStage();
 		stage.getViewport().update(width, height, true);
+		stateManager.getCurrentGameScreen().update(width, height);
 	}
 
 	@Override

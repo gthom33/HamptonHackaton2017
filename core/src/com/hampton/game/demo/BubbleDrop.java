@@ -130,6 +130,11 @@ public class BubbleDrop extends GameScreen {
         }
     }
 
+    @Override
+    public void update(int width, int height) {
+
+    }
+
     private void nextLevel() {
         dropSpeed++;
         newDropInterval = 180 / dropSpeed;
