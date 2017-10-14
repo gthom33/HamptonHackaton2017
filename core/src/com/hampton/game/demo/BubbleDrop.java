@@ -25,7 +25,6 @@ public class BubbleDrop extends GameScreen {
     private Label scoreLabel;
     private Label.LabelStyle scoreStyle;
     private int score = 0;
-    private int lives = 3;
     private int dropSpeed = 3;
     private int pauseTime = 1;
     private int newDropInterval = 60;
@@ -103,24 +102,20 @@ public class BubbleDrop extends GameScreen {
             hippo.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
+<<<<<<< HEAD
 //<<<<<<< HEAD
             Actor drop = ActorUtils.createActorFromImage("carrot.png");
             drop.setSize(100, 100);
+=======
+            Actor drop = ActorUtils.createActorFromImage("carrot.png");drop.setSize(100, 100);
+>>>>>>> parent of 21a3187... Cheeseburger for loop added, lives system added
             drop.setPosition(
-                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int) drop.getWidth()),
+                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop.getWidth()),
                     stage.getViewport().getScreenHeight());
             drop.setName("drop");
-            stage.addActor(drop);
+          stage.addActor(drop);
         }
-        if (gameOn && numFrames % newDropInterval == 30) {
-            Actor drop2 = ActorUtils.createActorFromImage("Cheeseburger.png");
-            drop2.setSize(100, 100);
-            drop2.setPosition(
-                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int) drop2.getWidth()),
-                    stage.getViewport().getScreenHeight());
-            drop2.setName("drop2");
-            stage.addActor(drop2);
-        }
+<<<<<<< HEAD
         /*
 =======
             Actor carrot = ActorUtils.createActorFromImage("carrot.png");carrot.setSize(100, 100);
@@ -140,12 +135,23 @@ public class BubbleDrop extends GameScreen {
             }
 >>>>>>>
 */
+=======
+            if (gameOn && numFrames % newDropInterval == 30) {
+                Actor drop2 = ActorUtils.createActorFromImage("Cheeseburger.png");drop2.setSize(100, 100);
+                drop2.setPosition(
+                        randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop2.getWidth()),
+                        stage.getViewport().getScreenHeight());
+                drop2.setName("drop2");
+                stage.addActor(drop2);
+            }
+>>>>>>> parent of 21a3187... Cheeseburger for loop added, lives system added
 
         if (gameOn && numFrames % pauseTime == 0) {
             // move the carrots, remove any that are beneath the bottom edge of
             // the screen or that hit the hippo. In the later case we play back
             // a sound effect as well.
             for (Actor carrot : stage.getActors()) {
+<<<<<<< HEAD
 //<<<<<<< HEAD
                 if ((carrot.getName() != null && (carrot.getName().equals("drop") || carrot.getName().equals("drop2")))) {
                     carrot.setPosition(carrot.getX(), carrot.getY() - dropSpeed * 3);
@@ -155,6 +161,11 @@ public class BubbleDrop extends GameScreen {
                     carrot.setPosition(carrot.getX(), carrot.getY() - dropSpeed*3);
 >>>>>>> origin/drop
 */
+=======
+                if ((carrot.getName() != null && (carrot.getName().equals("drop") || carrot.getName().equals("drop2"))))  {
+                    carrot.setPosition(carrot.getX(), carrot.getY() - dropSpeed*3);
+
+>>>>>>> parent of 21a3187... Cheeseburger for loop added, lives system added
                     if (carrot.getY() + 64 < 0) {
                         gameOn = false;
                         break;
@@ -167,41 +178,28 @@ public class BubbleDrop extends GameScreen {
                         score++;
                         if (score % 10 == 0) {
                             nextLevel();
+<<<<<<< HEAD
                         }
 
                         }
 
+=======
+                        }//else (ActorUtils.actorsCollided(cheeseburger, hippo)){
+                            //cheeseburger.remove();
+                            //burpSound.play();
+                            //score++;
+>>>>>>> parent of 21a3187... Cheeseburger for loop added, lives system added
                     }
-
-                }
-                scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed - 2));
-                if (!gameOn) {
-                    loseGame();
                 }
             }
-
-            for (Actor cheeseburger : stage.getActors()) {
-                if ((cheeseburger.getName() != null && (cheeseburger.getName().equals("drop") || cheeseburger.getName().equals("drop2")))) {
-                    cheeseburger.setPosition(cheeseburger.getX(), cheeseburger.getY() - dropSpeed * 3);
-
-                    if (ActorUtils.actorsCollided(cheeseburger, hippo)) {
-                        cheeseburger.remove();
-                        crunchSound.play();
-                        lives--;
-                        if (lives <= 0) {
-                            loseGame();
-                        }//else (ActorUtils.actorsCollided(cheeseburger, hippo)){
-                        //cheeseburger.remove();
-                        //burpSound.play();
-                        //score++;
-                    }
-
-                }
+            scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed-2));
+            if (!gameOn) {
+                loseGame();
             }
         }
     
 
-
+    @Override
     public void update(int width, int height) {
 
     }
