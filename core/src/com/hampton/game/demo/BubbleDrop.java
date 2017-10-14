@@ -22,6 +22,7 @@ public class BubbleDrop extends GameScreen {
     private Random randomNumberGenerator = new Random();
     private Actor hippo;
     private Actor background;
+    private Actor cheeseburger;
     private Label scoreLabel;
     private Label.LabelStyle scoreStyle;
     private int score = 0;
@@ -66,7 +67,6 @@ public class BubbleDrop extends GameScreen {
         for (Actor carrot : stage.getActors()) {
             if (carrot.getName() != null && carrot.getName().equals("drop")) {
                 carrot.remove();
-
             }
         }
         scoreStyle = new Label.LabelStyle(new BitmapFont(), new Color(1, 1, 1, 1));
@@ -99,32 +99,26 @@ public class BubbleDrop extends GameScreen {
     protected void calledEveryFrame() {
         // process user input
         if (Gdx.input.isTouched()) {
-
             hippo.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
-
-
-            Actor drop = ActorUtils.createActorFromImage("carrot.png");
-            drop.setSize(100, 100);
-
-            drop.setPosition(
-                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int) drop.getWidth()),
+            Actor carrot = ActorUtils.createActorFromImage("carrot.png");
+            carrot.setSize(100, 100);
+            carrot.setPosition(
+                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int) carrot.getWidth()),
                     stage.getViewport().getScreenHeight());
-            drop.setName("drop");
-            stage.addActor(drop);
+            carrot.setName("carrot");
+            stage.addActor(carrot);
         }
-
         if (gameOn && numFrames % newDropInterval == 30) {
-            Actor drop2 = ActorUtils.createActorFromImage("Cheeseburger.png");
-            drop2.setSize(100, 100);
-            drop2.setPosition(
-                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int) drop2.getWidth()),
+            cheeseburger = ActorUtils.createActorFromImage("Cheeseburger.png");
+            cheeseburger.setSize(100, 100);
+            cheeseburger.setPosition(
+                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int) cheeseburger.getWidth()),
                     stage.getViewport().getScreenHeight());
-            drop2.setName("drop2");
-            stage.addActor(drop2);
+            cheeseburger.setName("cheeseburger");
+            stage.addActor(cheeseburger);
         }
-
 
         if (gameOn && numFrames % pauseTime == 0) {
             // move the carrots, remove any that are beneath the bottom edge of
@@ -154,8 +148,10 @@ public class BubbleDrop extends GameScreen {
                         }
 
                     }
-
-
+                }
+                scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed - 2));
+                if (!gameOn) {
+                    loseGame();
                 }
             }
         }
@@ -168,7 +164,6 @@ public class BubbleDrop extends GameScreen {
 
         }
     }
-
 
     @Override
     public void update(int width, int height) {
@@ -202,3 +197,5 @@ public class BubbleDrop extends GameScreen {
         stage.addActor(backButton);
     }
 }
+
+
