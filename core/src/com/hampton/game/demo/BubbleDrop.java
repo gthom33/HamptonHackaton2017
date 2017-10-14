@@ -20,7 +20,6 @@ import java.util.Random;
 public class BubbleDrop extends GameScreen {
 
     private Random randomNumberGenerator = new Random();
-    //private Actor bucket;
     private Actor hippo;
     private Actor background;
     private Label scoreLabel;
@@ -33,7 +32,7 @@ public class BubbleDrop extends GameScreen {
 
 
     private Sound crunchSound;
-    //private Bad burpSound;
+    private Sound burpSound;
     private Music workoutMusic;
 
     @Override
@@ -81,12 +80,9 @@ public class BubbleDrop extends GameScreen {
         background = ActorUtils.createActorFromImage("Restaurant.jpg");
         background.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
 
-        //bucket = ActorUtils.createActorFromImage("bucket.png");
         hippo = ActorUtils.createActorFromImage("hippo.png");
-        //bucket.setPosition(20,20);
-        hippo.setSize(40, 40);
+        hippo.setSize(200, 200);
         stage.addActor(background);
-        //stage.addActor(bucket);
         stage.addActor(hippo);
     }
 
@@ -102,7 +98,7 @@ public class BubbleDrop extends GameScreen {
     protected void calledEveryFrame() {
         // process user input
         if (Gdx.input.isTouched()) {
-            //bucket.setX(Gdx.input.getX() - 64 / 2);
+
             hippo.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
@@ -142,11 +138,11 @@ public class BubbleDrop extends GameScreen {
                         score++;
                         if (score % 10 == 0) {
                             nextLevel();
-                        }//else (ActorUtils.actorsCollided(cheeseburger, hippo)){
-                            //cheeseburger.remove();
-                            //burpSound.play();
-                            //score++;
-                    }
+                        }/*else (ActorUtils.actorsCollided(drop2, hippo)){
+                            drop2.remove();
+                            burpSound.play();
+                            score--;
+                    }*/
                 }
             }
             scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed-2));
