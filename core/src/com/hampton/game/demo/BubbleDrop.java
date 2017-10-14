@@ -54,10 +54,18 @@ public class BubbleDrop extends GameScreen {
         newDropInterval = 60;
         numFrames = 0;
         // Clear any raindrops from previous games
+
         //Change raindrop to cheeseburger?
         for (Actor raindrop : stage.getActors()) {
             if (raindrop.getName() != null && raindrop.getName().equals("drop")) {
                 raindrop.remove();
+            }
+        }
+
+        for (Actor carrot : stage.getActors()) {
+            if (carrot.getName() != null && carrot.getName().equals("drop")) {
+                carrot.remove();
+
             }
         }
         scoreStyle = new Label.LabelStyle(new BitmapFont(), new Color(1,1,1,1));
@@ -99,22 +107,31 @@ public class BubbleDrop extends GameScreen {
             drop.setName("drop");
           stage.addActor(drop);
         }
+            if (gameOn && numFrames % newDropInterval == 0) {
+                Actor drop2 = ActorUtils.createActorFromImage("Cheeseburger.png");drop2.setSize(100, 100);
+                drop2.setPosition(
+                        randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop2.getWidth()),
+                        stage.getViewport().getScreenHeight());
+                drop2.setName("drop2");
+                stage.addActor(drop2);
+            }
 
         if (gameOn && numFrames % pauseTime == 0) {
-            // move the raindrops, remove any that are beneath the bottom edge of
+            // move the carrots, remove any that are beneath the bottom edge of
             // the screen or that hit the bucket. In the later case we play back
             // a sound effect as well.
-            for (Actor raindrop : stage.getActors()) {
-                if (raindrop.getName() != null && raindrop.getName().equals("drop")) {
-                    raindrop.setPosition(raindrop.getX(), raindrop.getY() - dropSpeed*3);
+            for (Actor carrot : stage.getActors()) {
+                if ((carrot.getName() != null && carrot.getName().equals("drop")))  {
+                    carrot.setPosition(carrot.getX(), carrot.getY() - dropSpeed*3);
 
-                    if (raindrop.getY() + 64 < 0) {
+                    if (carrot.getY() + 64 < 0) {
                         gameOn = false;
                         break;
                     }
 
-                    if (ActorUtils.actorsCollided(raindrop, bucket)) {
-                        raindrop.remove();
+
+                    if (ActorUtils.actorsCollided(carrot, bucket)) {
+                        carrot.remove();
                         crunchSound.play();
                         score++;
                         if (score % 10 == 0) {
@@ -146,9 +163,9 @@ public class BubbleDrop extends GameScreen {
 
     private void loseGame() {
         workoutMusic.stop();
-        for (Actor raindrop : stage.getActors()) {
-            if (raindrop.getName() != null && raindrop.getName().equals("drop")) {
-                raindrop.remove();
+        for (Actor carrot : stage.getActors()) {
+            if (carrot.getName() != null && carrot.getName().equals("drop")) {
+                carrot.remove();
             }
         }
         scoreLabel.remove();
