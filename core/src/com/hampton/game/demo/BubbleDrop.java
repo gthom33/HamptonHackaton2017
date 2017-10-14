@@ -82,7 +82,7 @@ public class BubbleDrop extends GameScreen {
         background.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
 
         hippo = ActorUtils.createActorFromImage("hippo.png");
-        hippo.setSize(200, 200);
+        hippo.setSize(325, 325);
         stage.addActor(background);
         stage.addActor(hippo);
     }
@@ -177,7 +177,7 @@ public class BubbleDrop extends GameScreen {
 
     private void nextLevel() {
         dropSpeed++;
-        newDropInterval = 1000 / dropSpeed;
+        newDropInterval = 200 / dropSpeed;
     }
 
     private void loseGame() {
