@@ -32,7 +32,7 @@ public class BubbleDrop extends GameScreen {
 
 
     private Sound crunchSound;
-    private Sound burpSound;
+    //private Sound burpSound;
     private Music workoutMusic;
 
     @Override
@@ -102,55 +102,65 @@ public class BubbleDrop extends GameScreen {
             hippo.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
-            Actor carrot = ActorUtils.createActorFromImage("carrot.png");carrot.setSize(100, 100);
-            carrot.setPosition(
-                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)carrot.getWidth()),
+
+
+            Actor drop = ActorUtils.createActorFromImage("carrot.png");
+            drop.setSize(100, 100);
+
+            drop.setPosition(
+                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop.getWidth()),
                     stage.getViewport().getScreenHeight());
-            carrot.setName("carrot");
-          stage.addActor(carrot);
+            drop.setName("drop");
+          stage.addActor(drop);
         }
+
             if (gameOn && numFrames % newDropInterval == 30) {
-                Actor cheeseburger = ActorUtils.createActorFromImage("Cheeseburger.png");cheeseburger.setSize(100, 100);
-                cheeseburger.setPosition(
-                        randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)cheeseburger.getWidth()),
+                Actor drop2 = ActorUtils.createActorFromImage("Cheeseburger.png");drop2.setSize(100, 100);
+                drop2.setPosition(
+                        randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop2.getWidth()),
                         stage.getViewport().getScreenHeight());
-                cheeseburger.setName("cheeseburger");
-                stage.addActor(cheeseburger);
+                drop2.setName("drop2");
+                stage.addActor(drop2);
             }
+
 
         if (gameOn && numFrames % pauseTime == 0) {
             // move the carrots, remove any that are beneath the bottom edge of
             // the screen or that hit the hippo. In the later case we play back
             // a sound effect as well.
             for (Actor carrot : stage.getActors()) {
-                if ((carrot.getName() != null && (carrot.getName().equals("carrot") || carrot.getName().equals("cheeseburger"))))  {
-                    carrot.setPosition(carrot.getX(), carrot.getY() - dropSpeed*3);
 
-                    if (carrot.getY() + 64 < 0) {
-                        gameOn = false;
-                        break;
+                    if ((carrot.getName() != null && (carrot.getName().equals("drop") || carrot.getName().equals("drop2")))) {
+                        carrot.setPosition(carrot.getX(), carrot.getY() - dropSpeed * 3);
+
+
+                        if (carrot.getY() + 64 < 0) {
+                            gameOn = false;
+                            break;
+                        }
+
+
+                        if (ActorUtils.actorsCollided(carrot, hippo)) {
+                            carrot.remove();
+                            crunchSound.play();
+                            score++;
+                            if (score % 10 == 0) {
+                                nextLevel();
+
+                            }
+
+                        }
+
+
                     }
-
-
-                    if (ActorUtils.actorsCollided(carrot, hippo)) {
-                        carrot.remove();
-                        crunchSound.play();
-                        score++;
-                        if (score % 10 == 0) {
-                            nextLevel();
-                        }/*else (ActorUtils.actorsCollided(drop2, hippo)){
-                            drop2.remove();
-                            burpSound.play();
-                            score--;
-                    }*/
                 }
             }
-            scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed-2));
+            scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed - 2));
             if (!gameOn) {
                 loseGame();
             }
         }
-    }
+    
 
     @Override
     public void update(int width, int height) {
