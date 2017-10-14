@@ -21,6 +21,7 @@ public class BubbleDrop extends GameScreen {
 
     private Random randomNumberGenerator = new Random();
     private Actor bucket;
+    private Actor background;
     private Label scoreLabel;
     private Label.LabelStyle scoreStyle;
     private int score = 0;
@@ -61,7 +62,7 @@ public class BubbleDrop extends GameScreen {
 
     @Override
     public void createActors() {
-        backgroundColor = new Color(0, 0, .2f, 1);
+        background = ActorUtils.createActorFromImage("Restaurant.jpg");
         bucket = ActorUtils.createActorFromImage("bucket.png");
         bucket.setPosition(20, 20);
         stage.addActor(bucket);
@@ -82,7 +83,7 @@ public class BubbleDrop extends GameScreen {
             bucket.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
-            Actor drop = ActorUtils.createActorFromImage("droplet.png");
+            Actor drop = ActorUtils.createActorFromImage("Cheeseburger.jpg");drop.setSize(100, 100);
             drop.setPosition(
                     randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop.getWidth()),
                     stage.getViewport().getScreenHeight());
