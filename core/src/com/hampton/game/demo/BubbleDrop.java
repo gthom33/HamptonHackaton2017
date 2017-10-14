@@ -32,7 +32,7 @@ public class BubbleDrop extends GameScreen {
 
 
     private Sound crunchSound;
-    private Sound burpSound;
+    //private Sound burpSound;
     private Music workoutMusic;
 
     @Override
