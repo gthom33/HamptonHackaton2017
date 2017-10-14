@@ -20,7 +20,8 @@ import java.util.Random;
 public class BubbleDrop extends GameScreen {
 
     private Random randomNumberGenerator = new Random();
-    private Actor bucket;
+    //private Actor bucket;
+    private Actor hippo;
     private Actor background;
     private Label scoreLabel;
     private Label.LabelStyle scoreStyle;
@@ -79,10 +80,13 @@ public class BubbleDrop extends GameScreen {
     public void createActors() {
         background = ActorUtils.createActorFromImage("Restaurant.jpg");
         background.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
-        bucket = ActorUtils.createActorFromImage("bucket.png");
-        bucket.setPosition(20, 20);
+        //bucket = ActorUtils.createActorFromImage("bucket.png");
+        hippo = ActorUtils.createActorFromImage("hippo.png");
+        //bucket.setPosition(20,20);
+        hippo.setSize(40, 40);
         stage.addActor(background);
-        stage.addActor(bucket);
+        //stage.addActor(bucket);
+        stage.addActor(hippo);
     }
 
     @Override
@@ -97,7 +101,8 @@ public class BubbleDrop extends GameScreen {
     protected void calledEveryFrame() {
         // process user input
         if (Gdx.input.isTouched()) {
-            bucket.setX(Gdx.input.getX() - 64 / 2);
+            //bucket.setX(Gdx.input.getX() - 64 / 2);
+            hippo.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
             Actor drop = ActorUtils.createActorFromImage("carrot.png");drop.setSize(100, 100);
@@ -130,13 +135,13 @@ public class BubbleDrop extends GameScreen {
                     }
 
 
-                    if (ActorUtils.actorsCollided(carrot, bucket)) {
+                    if (ActorUtils.actorsCollided(carrot, /*bucket*/ hippo)) {
                         carrot.remove();
                         crunchSound.play();
                         score++;
                         if (score % 10 == 0) {
                             nextLevel();
-                        }//else (ActorUtils.actorsCollided(cheeseburger, bucket)){
+                        }//else (ActorUtils.actorsCollided(cheeseburger, hippo)){
                             //raindrop.remove();
                             //burpSound.play();
                             //score++;
