@@ -36,7 +36,7 @@ public abstract class GameScreen {
     }
 
     protected abstract void calledEveryFrame();
-
+    public abstract void update(int width, int height);
     public Stage getStage() {
         return stage;
     }
@@ -44,4 +44,6 @@ public abstract class GameScreen {
     public Color getBackgroundColor() {
         return backgroundColor;
     }
+
+
 }

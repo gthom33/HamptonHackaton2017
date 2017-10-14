@@ -12,7 +12,8 @@ import com.hampton.game.utils.ActorUtils;
  */
 
 public class MainMenu extends GameScreen {
-    Actor buttonFromText;
+   private Actor buttonFromImage;
+    private Actor frontPage;
     private String nextScreenName;
 
     public MainMenu(String nextScreenName) {
@@ -26,13 +27,15 @@ public class MainMenu extends GameScreen {
 
     @Override
     public void createActors() {
-        buttonFromText = ActorUtils.createButtonFromText(
-                "Start new game",
-                new Color(1, 1, 1, 1));
-        buttonFromText.setPosition(
-                stage.getViewport().getScreenWidth()/2 - buttonFromText.getWidth()/2,
-                stage.getViewport().getScreenHeight()/2 - buttonFromText.getHeight()/2);
-        stage.addActor(buttonFromText);
+        frontPage= ActorUtils.createActorFromImage("eating.jpg");
+        frontPage.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
+        stage.addActor(frontPage);
+        buttonFromImage = ActorUtils.createActorFromImage("start.png");
+        buttonFromImage.setSize(500,500);
+        buttonFromImage.setPosition(
+                stage.getViewport().getScreenWidth()/2 - buttonFromImage.getWidth()/2,
+                (-buttonFromImage.getHeight() / 2) + 100);
+        stage.addActor(buttonFromImage);
     }
 
     @Override
@@ -42,7 +45,7 @@ public class MainMenu extends GameScreen {
 
     @Override
     public void setActionsForActors() {
-        buttonFromText.addListener(new ActorGestureListener() {
+        buttonFromImage.addListener(new ActorGestureListener() {
             @Override
             public void touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 gotoScreen(nextScreenName);
@@ -52,6 +55,11 @@ public class MainMenu extends GameScreen {
 
     @Override
     protected void calledEveryFrame() {
+
+    }
+
+    @Override
+    public void update(int width, int height) {
 
     }
 }
