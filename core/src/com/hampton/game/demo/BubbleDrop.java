@@ -39,7 +39,7 @@ public class BubbleDrop extends GameScreen {
     public void initialize() {
         // load the drop sound effect and the rain background "music"
         //dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
-        mmmSound = Gdx.audio.newSound(Gdx.files.internal("mmm-girl.mp3"));
+        mmmSound = Gdx.audio.newSound(Gdx.files.internal("mmm_Girl.wav"));
         //burpSound = Gdx.audio.newSound(Gdx.files.internal("loud_burp.mp3"));
         workoutMusic = Gdx.audio.newMusic(Gdx.files.internal("body_lang.mp3"));
 
