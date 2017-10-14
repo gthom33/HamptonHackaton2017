@@ -39,10 +39,10 @@ public class MainMenu extends GameScreen {
                 (-buttonFromImage.getHeight() / 2) + 100);
         stage.addActor(buttonFromImage);
         title=ActorUtils.createActorFromImage("name.png");
-        title.setSize(500,500);
+        title.setSize(800,800);
         title.setPosition(
-                stage.getViewport().getScreenWidth()/8 + title.getWidth()/8,
-                (title.getHeight() / 8) + 25);
+                stage.getViewport().getScreenWidth()/8 + title.getWidth()/2 + 220,
+                (title.getHeight() / 8) + 320);
         stage.addActor(title);
     }
 

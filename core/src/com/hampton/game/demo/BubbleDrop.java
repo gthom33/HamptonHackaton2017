@@ -26,6 +26,7 @@ public class BubbleDrop extends GameScreen {
     private Label scoreLabel;
     private Label.LabelStyle scoreStyle;
     private int score = 0;
+    private int life= 3;
     private int dropSpeed = 3;
     private int pauseTime = 1;
     private int newDropInterval = 60;
@@ -42,7 +43,7 @@ public class BubbleDrop extends GameScreen {
         crunchSound = Gdx.audio.newSound(Gdx.files.internal("carrotNom.wav"));
         crunchSound.setVolume(150, 150f);
         burpSound = Gdx.audio.newSound(Gdx.files.internal("loud_burp.mp3"));
-        burpSound.setVolume(150, 150f);
+        burpSound.setVolume(150,150f);
         workoutMusic = Gdx.audio.newMusic(Gdx.files.internal("body_lang.mp3"));
         workoutMusic.setVolume(0.5f);
 
@@ -56,7 +57,7 @@ public class BubbleDrop extends GameScreen {
         numFrames = 0;
         // Clear any raindrops from previous games
 
-        //Change raindrop to cheeseburger?
+
         for (Actor cheeseburger : stage.getActors()) {
             if (cheeseburger.getName() != null && cheeseburger.getName().equals("drop2")) {
                 cheeseburger.remove();
@@ -123,30 +124,27 @@ public class BubbleDrop extends GameScreen {
             // move the carrots, remove any that are beneath the bottom edge of
             // the screen or that hit the hippo. In the later case we play back
             // a sound effect as well.
-            for (Actor carrot : stage.getActors()) {
+            for (Actor food : stage.getActors()) {
 
-                if ((carrot.getName() != null && (carrot.getName().equals("carrot") || carrot.getName().equals("cheeseburger")))) {
-                    carrot.setPosition(carrot.getX(), carrot.getY() - dropSpeed * 3);
-
-
-                    if (carrot.getY() + 64 < 0) {
-                        gameOn = false;
-                        break;
-                    }
+                if ((food.getName() != null && (food.getName().equals("drop") || food.getName().equals("drop2")))) {
+                    food.setPosition(food.getX(), food.getY() - dropSpeed * 3);
 
 
-                    if (ActorUtils.actorsCollided(carrot, hippo)) {
-                        carrot.remove();
-                        crunchSound.play();
-                        score++;
-                        if (score % 10 == 0) {
-                            nextLevel();
 
-                        } else if (ActorUtils.actorsCollided(cheeseburger, hippo)) {
-                            cheeseburger.remove();
-                            burpSound.play();
+
+
+                    if (ActorUtils.actorsCollided(food, hippo)) {
+                        food.remove();
+                        if(food.getName().equals("drop")) {
+                             crunchSound.play();
                             score++;
+                            if (score % 10 == 0) {
+                                nextLevel();
 
+                            }
+                        }else {
+                          burpSound.play();
+                            life--;
                         }
 
                     }
@@ -156,6 +154,11 @@ public class BubbleDrop extends GameScreen {
                     loseGame();
                 }
             }
+        }
+
+        scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed - 2));
+        if (life==0) {
+            loseGame();
         }
     }
 
