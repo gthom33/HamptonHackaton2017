@@ -142,7 +142,7 @@ public class BubbleDrop extends GameScreen {
                             drop2.remove();
                             burpSound.play();
                             score--;
-                    }*/
+                    }*/}
                 }
             }
             scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed-2));
@@ -151,6 +151,8 @@ public class BubbleDrop extends GameScreen {
             }
         }
     }
+
+
 
     @Override
     public void update(int width, int height) {
