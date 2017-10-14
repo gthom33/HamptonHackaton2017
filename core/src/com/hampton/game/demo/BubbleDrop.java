@@ -90,13 +90,14 @@ public class BubbleDrop extends GameScreen {
             bucket.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
-            Actor drop = ActorUtils.createActorFromImage("Cheeseburger.png");drop.setSize(100, 100);
+            Actor drop = ActorUtils.createActorFromImage("carrot.png");drop.setSize(100, 100);
             drop.setPosition(
                     randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop.getWidth()),
                     stage.getViewport().getScreenHeight());
             drop.setName("drop");
-            stage.addActor(drop);
+          stage.addActor(drop);
         }
+
         if (gameOn && numFrames % pauseTime == 0) {
             // move the raindrops, remove any that are beneath the bottom edge of
             // the screen or that hit the bucket. In the later case we play back
@@ -109,6 +110,7 @@ public class BubbleDrop extends GameScreen {
                         gameOn = false;
                         break;
                     }
+
                     if (ActorUtils.actorsCollided(raindrop, bucket)) {
                         raindrop.remove();
                         mmmSound.play();
