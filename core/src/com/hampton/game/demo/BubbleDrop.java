@@ -107,7 +107,7 @@ public class BubbleDrop extends GameScreen {
             drop.setName("drop");
           stage.addActor(drop);
         }
-            if (gameOn && numFrames % newDropInterval == 0) {
+            if (gameOn && numFrames % newDropInterval == 30) {
                 Actor drop2 = ActorUtils.createActorFromImage("Cheeseburger.png");drop2.setSize(100, 100);
                 drop2.setPosition(
                         randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop2.getWidth()),
