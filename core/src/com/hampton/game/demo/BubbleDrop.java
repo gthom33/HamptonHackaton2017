@@ -20,7 +20,6 @@ import java.util.Random;
 public class BubbleDrop extends GameScreen {
 
     private Random randomNumberGenerator = new Random();
-    //private Actor bucket;
     private Actor hippo;
     private Actor background;
     private Label scoreLabel;
@@ -33,7 +32,7 @@ public class BubbleDrop extends GameScreen {
 
 
     private Sound crunchSound;
-    //private Bad burpSound;
+    //private Sound burpSound;
     private Music workoutMusic;
 
     @Override
@@ -80,17 +79,9 @@ public class BubbleDrop extends GameScreen {
     public void createActors() {
         background = ActorUtils.createActorFromImage("Restaurant.jpg");
         background.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
-<<<<<<< HEAD
-        //bucket = ActorUtils.createActorFromImage("bucket.png");
         hippo = ActorUtils.createActorFromImage("hippo.png");
-        //bucket.setPosition(20,20);
-        hippo.setSize(40, 40);
-=======
-        bucket = ActorUtils.createActorFromImage("hippo.png");
-        bucket.setPosition(20, 20);
->>>>>>> 5e30287099f73663d4fce160a13f9dbb036194f1
+        hippo.setSize(200,200);
         stage.addActor(background);
-        //stage.addActor(bucket);
         stage.addActor(hippo);
     }
 
