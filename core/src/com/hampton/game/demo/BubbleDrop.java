@@ -66,7 +66,6 @@ public class BubbleDrop extends GameScreen {
         for (Actor carrot : stage.getActors()) {
             if (carrot.getName() != null && carrot.getName().equals("drop")) {
                 carrot.remove();
-
             }
         }
         scoreStyle = new Label.LabelStyle(new BitmapFont(), new Color(1, 1, 1, 1));
@@ -99,7 +98,6 @@ public class BubbleDrop extends GameScreen {
     protected void calledEveryFrame() {
         // process user input
         if (Gdx.input.isTouched()) {
-
             hippo.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
@@ -114,7 +112,7 @@ public class BubbleDrop extends GameScreen {
         if (gameOn && numFrames % newDropInterval == 30) {
             cheeseburger = ActorUtils.createActorFromImage("Cheeseburger.png");
             cheeseburger.setSize(100, 100);
-            cheeseburger.setPosition()
+            cheeseburger.setPosition(
                     randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int) cheeseburger.getWidth()),
                     stage.getViewport().getScreenHeight());
             cheeseburger.setName("cheeseburger");
@@ -126,8 +124,10 @@ public class BubbleDrop extends GameScreen {
             // the screen or that hit the hippo. In the later case we play back
             // a sound effect as well.
             for (Actor carrot : stage.getActors()) {
+
                 if ((carrot.getName() != null && (carrot.getName().equals("carrot") || carrot.getName().equals("cheeseburger")))) {
                     carrot.setPosition(carrot.getX(), carrot.getY() - dropSpeed * 3);
+
 
                     if (carrot.getY() + 64 < 0) {
                         gameOn = false;
@@ -141,11 +141,14 @@ public class BubbleDrop extends GameScreen {
                         score++;
                         if (score % 10 == 0) {
                             nextLevel();
-                        }else (ActorUtils.actorsCollided(cheeseburger, hippo)){
+
+                        } else if (ActorUtils.actorsCollided(cheeseburger, hippo)) {
                             cheeseburger.remove();
                             burpSound.play();
                             score++;
+
                         }
+
                     }
                 }
                 scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed - 2));
@@ -154,9 +157,10 @@ public class BubbleDrop extends GameScreen {
                 }
             }
         }
+    }
 
-        @Override
-        public void update(int width, int height) {
+    @Override
+    public void update(int width, int height) {
 
     }
 
