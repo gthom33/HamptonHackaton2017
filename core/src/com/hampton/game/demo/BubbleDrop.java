@@ -136,8 +136,7 @@ public class BubbleDrop extends GameScreen {
                         score++;
                         if (score % 10 == 0) {
                             nextLevel();
-                        }//else{
-                            //(ActorUtils.actorsCollided(carrot, bucket))
+                        }//else (ActorUtils.actorsCollided(cheeseburger, bucket)){
                             //raindrop.remove();
                             //burpSound.play();
                             //score++;
