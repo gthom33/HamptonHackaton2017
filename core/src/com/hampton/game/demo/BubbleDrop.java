@@ -119,15 +119,10 @@ public class BubbleDrop extends GameScreen {
                         break;
                     }
 
-<<<<<<< HEAD
+
                     if (ActorUtils.actorsCollided(carrot, bucket)) {
                         carrot.remove();
-                        mmmSound.play();
-=======
-                    if (ActorUtils.actorsCollided(raindrop, bucket)) {
-                        raindrop.remove();
                         crunchSound.play();
->>>>>>> 32e3119e8ab25b65e9d10deef0605df9dab8e3a8
                         score++;
                         if (score % 10 == 0) {
                             nextLevel();
