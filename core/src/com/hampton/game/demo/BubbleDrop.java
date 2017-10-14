@@ -32,7 +32,7 @@ public class BubbleDrop extends GameScreen {
 
 
     private Sound crunchSound;
-    //private Sound burpSound;
+    private Sound burpSound;
     private Music workoutMusic;
 
     @Override
@@ -55,7 +55,7 @@ public class BubbleDrop extends GameScreen {
         numFrames = 0;
         // Clear any raindrops from previous games
 
-        //Change raindrop to cheeseburger?
+
         for (Actor cheeseburger : stage.getActors()) {
             if (cheeseburger.getName() != null && cheeseburger.getName().equals("drop2")) {
                 cheeseburger.remove();
