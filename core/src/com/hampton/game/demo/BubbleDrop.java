@@ -111,7 +111,7 @@ public class BubbleDrop extends GameScreen {
             // the screen or that hit the bucket. In the later case we play back
             // a sound effect as well.
             for (Actor carrot : stage.getActors()) {
-                if ((carrot.getName() != null && carrot.getName().equals("drop"))  {
+                if ((carrot.getName() != null && carrot.getName().equals("drop")))  {
                     carrot.setPosition(carrot.getX(), carrot.getY() - dropSpeed*3);
 
                     if (carrot.getY() + 64 < 0) {
