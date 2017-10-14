@@ -82,7 +82,7 @@ public class BubbleDrop extends GameScreen {
         background.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
 
         hippo = ActorUtils.createActorFromImage("hippo.png");
-        hippo.setSize(200, 200);
+        hippo.setSize(325, 325);
         stage.addActor(background);
         stage.addActor(hippo);
     }
