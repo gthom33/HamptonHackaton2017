@@ -42,6 +42,7 @@ public class BubbleDrop extends GameScreen {
         mmmSound = Gdx.audio.newSound(Gdx.files.internal("mmm_Girl.wav"));
         //burpSound = Gdx.audio.newSound(Gdx.files.internal("loud_burp.mp3"));
         workoutMusic = Gdx.audio.newMusic(Gdx.files.internal("body_lang.mp3"));
+        workoutMusic.setVolume(0.5f);
 
         // start the playback of the background music immediately
         workoutMusic.setLooping(true);
@@ -112,7 +113,11 @@ public class BubbleDrop extends GameScreen {
                         score++;
                         if (score % 10 == 0) {
                             nextLevel();
-                        }
+                        }//else{
+                            //(ActorUtils.actorsCollided(carrot, bucket))
+                            //raindrop.remove();
+                            //mmmSound.play();
+                            //score++;
                     }
                 }
             }
