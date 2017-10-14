@@ -22,6 +22,7 @@ public class BubbleDrop extends GameScreen {
     private Random randomNumberGenerator = new Random();
     private Actor hippo;
     private Actor background;
+    private Actor cheeseburger;
     private Label scoreLabel;
     private Label.LabelStyle scoreStyle;
     private int score = 0;
@@ -39,9 +40,9 @@ public class BubbleDrop extends GameScreen {
     public void initialize() {
         // load the drop sound effect and the rain background "music"
         crunchSound = Gdx.audio.newSound(Gdx.files.internal("carrotNom.wav"));
-        crunchSound.setVolume(150,150f);
+        crunchSound.setVolume(150, 150f);
         burpSound = Gdx.audio.newSound(Gdx.files.internal("loud_burp.mp3"));
-        burpSound.setVolume(150,150f);
+        burpSound.setVolume(150, 150f);
         workoutMusic = Gdx.audio.newMusic(Gdx.files.internal("body_lang.mp3"));
         workoutMusic.setVolume(0.5f);
 
@@ -68,7 +69,7 @@ public class BubbleDrop extends GameScreen {
 
             }
         }
-        scoreStyle = new Label.LabelStyle(new BitmapFont(), new Color(1,1,1,1));
+        scoreStyle = new Label.LabelStyle(new BitmapFont(), new Color(1, 1, 1, 1));
         scoreStyle.font.getData().setScale(4);
         scoreLabel = new Label("0", scoreStyle);
         scoreLabel.setPosition(0, stage.getViewport().getScreenHeight() - scoreLabel.getHeight());
@@ -102,29 +103,31 @@ public class BubbleDrop extends GameScreen {
             hippo.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
-            Actor carrot = ActorUtils.createActorFromImage("carrot.png");carrot.setSize(100, 100);
+            Actor carrot = ActorUtils.createActorFromImage("carrot.png");
+            carrot.setSize(100, 100);
             carrot.setPosition(
-                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)carrot.getWidth()),
+                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int) carrot.getWidth()),
                     stage.getViewport().getScreenHeight());
             carrot.setName("carrot");
-          stage.addActor(carrot);
+            stage.addActor(carrot);
         }
-            if (gameOn && numFrames % newDropInterval == 30) {
-                Actor cheeseburger = ActorUtils.createActorFromImage("Cheeseburger.png");cheeseburger.setSize(100, 100);
-                cheeseburger.setPosition(
-                        randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)cheeseburger.getWidth()),
-                        stage.getViewport().getScreenHeight());
-                cheeseburger.setName("cheeseburger");
-                stage.addActor(cheeseburger);
-            }
+        if (gameOn && numFrames % newDropInterval == 30) {
+            cheeseburger = ActorUtils.createActorFromImage("Cheeseburger.png");
+            cheeseburger.setSize(100, 100);
+            cheeseburger.setPosition()
+                    randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int) cheeseburger.getWidth()),
+                    stage.getViewport().getScreenHeight());
+            cheeseburger.setName("cheeseburger");
+            stage.addActor(cheeseburger);
+        }
 
         if (gameOn && numFrames % pauseTime == 0) {
             // move the carrots, remove any that are beneath the bottom edge of
             // the screen or that hit the hippo. In the later case we play back
             // a sound effect as well.
             for (Actor carrot : stage.getActors()) {
-                if ((carrot.getName() != null && (carrot.getName().equals("carrot") || carrot.getName().equals("cheeseburger"))))  {
-                    carrot.setPosition(carrot.getX(), carrot.getY() - dropSpeed*3);
+                if ((carrot.getName() != null && (carrot.getName().equals("carrot") || carrot.getName().equals("cheeseburger")))) {
+                    carrot.setPosition(carrot.getX(), carrot.getY() - dropSpeed * 3);
 
                     if (carrot.getY() + 64 < 0) {
                         gameOn = false;
@@ -138,22 +141,22 @@ public class BubbleDrop extends GameScreen {
                         score++;
                         if (score % 10 == 0) {
                             nextLevel();
-                        }else (ActorUtils.actorsCollided(drop2, hippo)){
-                            drop2.remove();
+                        }else (ActorUtils.actorsCollided(cheeseburger, hippo)){
+                            cheeseburger.remove();
                             burpSound.play();
                             score++;
+                        }
                     }
                 }
-            }
-            scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed-2));
-            if (!gameOn) {
-                loseGame();
+                scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed - 2));
+                if (!gameOn) {
+                    loseGame();
+                }
             }
         }
-    }
 
-    @Override
-    public void update(int width, int height) {
+        @Override
+        public void update(int width, int height) {
 
     }
 
@@ -184,3 +187,5 @@ public class BubbleDrop extends GameScreen {
         stage.addActor(backButton);
     }
 }
+
+
