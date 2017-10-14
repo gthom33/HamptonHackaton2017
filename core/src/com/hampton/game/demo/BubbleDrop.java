@@ -57,9 +57,9 @@ public class BubbleDrop extends GameScreen {
         // Clear any raindrops from previous games
 
         //Change raindrop to cheeseburger?
-        for (Actor raindrop : stage.getActors()) {
-            if (raindrop.getName() != null && raindrop.getName().equals("drop")) {
-                raindrop.remove();
+        for (Actor cheeseburger : stage.getActors()) {
+            if (cheeseburger.getName() != null && cheeseburger.getName().equals("drop2")) {
+                cheeseburger.remove();
             }
         }
 
@@ -140,14 +140,14 @@ public class BubbleDrop extends GameScreen {
                     }
 
 
-                    if (ActorUtils.actorsCollided(carrot, /*bucket*/ hippo)) {
+                    if (ActorUtils.actorsCollided(carrot, hippo)) {
                         carrot.remove();
                         crunchSound.play();
                         score++;
                         if (score % 10 == 0) {
                             nextLevel();
                         }//else (ActorUtils.actorsCollided(cheeseburger, hippo)){
-                            //raindrop.remove();
+                            //cheeseburger.remove();
                             //burpSound.play();
                             //score++;
                     }
