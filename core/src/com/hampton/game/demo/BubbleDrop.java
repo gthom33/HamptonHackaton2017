@@ -32,7 +32,7 @@ public class BubbleDrop extends GameScreen {
 
 
     private Sound crunchSound;
-    //private Sound burpSound;
+    private Sound burpSound;
     private Music workoutMusic;
 
     @Override
@@ -79,8 +79,9 @@ public class BubbleDrop extends GameScreen {
     public void createActors() {
         background = ActorUtils.createActorFromImage("Restaurant.jpg");
         background.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
+
         hippo = ActorUtils.createActorFromImage("hippo.png");
-        hippo.setSize(200,200);
+        hippo.setSize(200, 200);
         stage.addActor(background);
         stage.addActor(hippo);
     }
@@ -97,7 +98,7 @@ public class BubbleDrop extends GameScreen {
     protected void calledEveryFrame() {
         // process user input
         if (Gdx.input.isTouched()) {
-            //bucket.setX(Gdx.input.getX() - 64 / 2);
+
             hippo.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
@@ -137,11 +138,11 @@ public class BubbleDrop extends GameScreen {
                         score++;
                         if (score % 10 == 0) {
                             nextLevel();
-                        }//else (ActorUtils.actorsCollided(cheeseburger, hippo)){
-                            //cheeseburger.remove();
-                            //burpSound.play();
-                            //score++;
-                    }
+                        }/*else (ActorUtils.actorsCollided(drop2, hippo)){
+                            drop2.remove();
+                            burpSound.play();
+                            score--;
+                    }*/
                 }
             }
             scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed-2));
