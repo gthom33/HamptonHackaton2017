@@ -87,7 +87,7 @@ public class BubbleDrop extends GameScreen {
             bucket.setX(Gdx.input.getX() - 64 / 2);
         }
         if (gameOn && numFrames % newDropInterval == 0) {
-            Actor drop = ActorUtils.createActorFromImage("Cheeseburger.jpg");drop.setSize(100, 100);
+            Actor drop = ActorUtils.createActorFromImage("Cheeseburger.png");drop.setSize(100, 100);
             drop.setPosition(
                     randomNumberGenerator.nextInt(stage.getViewport().getScreenWidth() - (int)drop.getWidth()),
                     stage.getViewport().getScreenHeight());
