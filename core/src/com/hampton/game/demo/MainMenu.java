@@ -30,7 +30,7 @@ public class MainMenu extends GameScreen {
         frontPage= ActorUtils.createActorFromImage("eating.jpg");
         frontPage.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
         stage.addActor(frontPage);
-        buttonFromImage = ActorUtils.createActorFromImage("start.jpg");
+        buttonFromImage = ActorUtils.createActorFromImage("start.png");
         buttonFromImage.setSize(50,50);
         buttonFromImage.setPosition(
                 stage.getViewport().getScreenWidth()/2 - buttonFromImage.getWidth()/2,
