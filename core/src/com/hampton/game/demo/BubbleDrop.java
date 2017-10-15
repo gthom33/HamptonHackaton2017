@@ -44,7 +44,7 @@ public class BubbleDrop extends GameScreen {
         crunchSound.setVolume(150, 150f);
         burpSound = Gdx.audio.newSound(Gdx.files.internal("loud_burp.mp3"));
         burpSound.setVolume(150,150f);
-        workoutMusic = Gdx.audio.newMusic(Gdx.files.internal("body_lang.mp3"));
+        workoutMusic = Gdx.audio.newMusic(Gdx.files.internal("New Music.mp3"));
         workoutMusic.setVolume(0.5f);
 
         // start the playback of the background music immediately
