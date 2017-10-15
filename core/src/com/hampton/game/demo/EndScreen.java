@@ -27,7 +27,7 @@ public class EndScreen extends GameScreen {
 
     @Override
     public void initialize() {
-
+    points.setText("Score" + score.score);
     }
 
     @Override
@@ -39,6 +39,7 @@ public class EndScreen extends GameScreen {
 
         background=ActorUtils.createActorFromImage("vomit.jpg");
         background.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
+        stage.addActor(background);
         youLose = ActorUtils.createButtonFromText("YOU LOSE", new Color(1, 1, 1, 1));
         youLose.setPosition(300, 300);
         stage.addActor(youLose);
