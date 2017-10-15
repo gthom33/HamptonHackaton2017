@@ -126,16 +126,12 @@ public class BubbleDrop extends GameScreen {
             // a sound effect as well.
             for (Actor food : stage.getActors()) {
 
-                if ((food.getName() != null && (food.getName().equals("drop") || food.getName().equals("drop2")))) {
+                if ((food.getName() != null && (food.getName().equals("carrot") || food.getName().equals("cheeseburger")))) {
                     food.setPosition(food.getX(), food.getY() - dropSpeed * 3);
-
-
-
-
 
                     if (ActorUtils.actorsCollided(food, hippo)) {
                         food.remove();
-                        if(food.getName().equals("drop")) {
+                        if(food.getName().equals("carrot")) {
                              crunchSound.play();
                             score++;
                             if (score % 10 == 0) {
@@ -149,15 +145,13 @@ public class BubbleDrop extends GameScreen {
 
                     }
                 }
-                scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed - 2));
-                if (!gameOn) {
-                    loseGame();
-                }
+
             }
         }
 
         scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed - 2));
         if (life==0) {
+            gameOn=false;
             loseGame();
         }
     }
