@@ -1,5 +1,6 @@
 package com.hampton.game.demo;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
@@ -49,7 +50,17 @@ public class BubbleDrop extends GameScreen {
 
         // start the playback of the background music immediately
         workoutMusic.setLooping(true);
-        workoutMusic.play();
+        switch(Gdx.app.getType()) {
+            case Android:
+                workoutMusic.play();
+                break;
+                // android specific code
+            case Desktop:
+                // dont play sound
+                break;
+                // desktop specific code
+        }
+
         gameOn = true;
         score = 0;
         life=3;
