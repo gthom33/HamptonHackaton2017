@@ -25,7 +25,7 @@ public class BubbleDrop extends GameScreen {
     private Actor cheeseburger;
     private Label scoreLabel;
     private Label.LabelStyle scoreStyle;
-    private int score = 0;
+    public int score = 0;
     private int life= 3;
     private int dropSpeed = 3;
     private int pauseTime = 1;
@@ -73,7 +73,7 @@ public class BubbleDrop extends GameScreen {
         scoreStyle = new Label.LabelStyle(new BitmapFont(), new Color(1, 1, 1, 1));
         scoreStyle.font.getData().setScale(4);
         scoreLabel = new Label("0", scoreStyle);
-        scoreLabel.setPosition(0, stage.getViewport().getScreenHeight() - scoreLabel.getHeight());
+        scoreLabel.setPosition(0, stage.getViewport().getScreenHeight() - scoreLabel.getHeight()-15);
         stage.addActor(scoreLabel);
     }
 
@@ -130,7 +130,7 @@ public class BubbleDrop extends GameScreen {
                 if ((food.getName() != null && (food.getName().equals("carrot") || food.getName().equals("cheeseburger")))) {
                     food.setPosition(food.getX(), food.getY() - dropSpeed * 3);
 
-                    if (ActorUtils.actorsCollided(food, hippo)) {
+                    if (ActorUtils.actorsCollided(food, hippo) && (food.getY() > (hippo.getY() + hippo.getHeight() -10))) {
                         food.remove();
                         if(food.getName().equals("carrot")) {
                              crunchSound.play();
