@@ -18,7 +18,7 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "com.hampton.game"
+        applicationId "com.hampton.healthypursuit"
         minSdkVersion 9
         targetSdkVersion 23
         versionCode 1

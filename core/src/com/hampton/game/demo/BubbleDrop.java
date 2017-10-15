@@ -73,7 +73,7 @@ public class BubbleDrop extends GameScreen {
         scoreStyle = new Label.LabelStyle(new BitmapFont(), new Color(1, 1, 1, 1));
         scoreStyle.font.getData().setScale(4);
         scoreLabel = new Label("0", scoreStyle);
-        scoreLabel.setPosition(0, stage.getViewport().getScreenHeight() - scoreLabel.getHeight());
+        scoreLabel.setPosition(0, stage.getViewport().getScreenHeight() - scoreLabel.getHeight()-15);
         stage.addActor(scoreLabel);
     }
 
@@ -130,7 +130,7 @@ public class BubbleDrop extends GameScreen {
                 if ((food.getName() != null && (food.getName().equals("carrot") || food.getName().equals("cheeseburger")))) {
                     food.setPosition(food.getX(), food.getY() - dropSpeed * 3);
 
-                    if (ActorUtils.actorsCollided(food, hippo)) {
+                    if (ActorUtils.actorsCollided(food, hippo) && (food.getY() > (hippo.getY() + hippo.getHeight() -10))) {
                         food.remove();
                         if(food.getName().equals("carrot")) {
                              crunchSound.play();
@@ -150,8 +150,8 @@ public class BubbleDrop extends GameScreen {
             }
         }
 
-        scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed - 2));
-        if (life==0) {
+        scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed - 2) + " \n Lives: " + life);
+        if (life==0 && gameOn == true) {
             gameOn=false;
             loseGame();
         }
