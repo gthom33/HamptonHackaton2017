@@ -130,7 +130,7 @@ public class BubbleDrop extends GameScreen {
                 if ((food.getName() != null && (food.getName().equals("carrot") || food.getName().equals("cheeseburger")))) {
                     food.setPosition(food.getX(), food.getY() - dropSpeed * 3);
 
-                    if (ActorUtils.actorsCollided(food, hippo)) {
+                    if (ActorUtils.actorsCollided(food, hippo) && (food.getY()>(hippo.getY()+hippo.getHeight()-10)))  {
                         food.remove();
                         if(food.getName().equals("carrot")) {
                              crunchSound.play();
