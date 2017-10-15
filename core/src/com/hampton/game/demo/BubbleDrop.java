@@ -52,6 +52,7 @@ public class BubbleDrop extends GameScreen {
         workoutMusic.play();
         gameOn = true;
         score = 0;
+        life=3;
         dropSpeed = 3;
         newDropInterval = 60;
         numFrames = 0;
