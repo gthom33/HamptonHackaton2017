@@ -59,15 +59,10 @@ public class BubbleDrop extends GameScreen {
         // Clear any raindrops from previous games
 
 
-        for (Actor cheeseburger : stage.getActors()) {
-            if (cheeseburger.getName() != null && cheeseburger.getName().equals("drop2")) {
-                cheeseburger.remove();
-            }
-        }
 
-        for (Actor carrot : stage.getActors()) {
-            if (carrot.getName() != null && carrot.getName().equals("drop")) {
-                carrot.remove();
+        for (Actor actor : stage.getActors()) {
+            if (actor.getName() != null && !actor.getName().equals("restaurant")&& !actor.getName().equals("hippo")) {
+                actor.remove();
             }
         }
         scoreStyle = new Label.LabelStyle(new BitmapFont(), new Color(1, 1, 1, 1));
@@ -81,9 +76,10 @@ public class BubbleDrop extends GameScreen {
     public void createActors() {
         background = ActorUtils.createActorFromImage("Restaurant.jpg");
         background.setSize(stage.getViewport().getScreenWidth(), stage.getViewport().getScreenHeight());
-
+        background.setName("restaurant");
         hippo = ActorUtils.createActorFromImage("hippo.png");
         hippo.setSize(325, 325);
+        hippo.setName("hippo");
         stage.addActor(background);
         stage.addActor(hippo);
     }
@@ -151,7 +147,7 @@ public class BubbleDrop extends GameScreen {
         }
 
         scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed - 2));
-        if (life==0) {
+        if (life==0 && gameOn==true) {
             gameOn=false;
             loseGame();
         }
@@ -178,11 +174,13 @@ public class BubbleDrop extends GameScreen {
         final Actor backButton = ActorUtils.createButtonFromText(
                 "Final score: " + score + " Click to go to back to menu",
                 new Color(1, 1, 1, 1));
+        backButton.setName("scores");
         backButton.setPosition(0, stage.getViewport().getScreenHeight() - backButton.getHeight());
         backButton.addListener(new ActorGestureListener() {
             @Override
             public void touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 backButton.remove();
+                gameOn = true;
                 gotoScreen("Menu");
             }
         });
