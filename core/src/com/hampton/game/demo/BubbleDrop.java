@@ -151,7 +151,7 @@ public class BubbleDrop extends GameScreen {
         }
 
         scoreLabel.setText("Score: " + score + " Level: " + (dropSpeed - 2) + " \n Lives: " + life);
-        if (life==0) {
+        if (life==0 && gameOn == true) {
             gameOn=false;
             loseGame();
         }
