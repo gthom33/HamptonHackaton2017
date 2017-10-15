@@ -25,7 +25,7 @@ public class BubbleDrop extends GameScreen {
     private Actor cheeseburger;
     private Label scoreLabel;
     private Label.LabelStyle scoreStyle;
-    private int score = 0;
+    public int score = 0;
     private int life= 3;
     private int dropSpeed = 3;
     private int pauseTime = 1;
