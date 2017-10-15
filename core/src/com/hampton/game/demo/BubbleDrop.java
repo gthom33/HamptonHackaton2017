@@ -154,6 +154,7 @@ public class BubbleDrop extends GameScreen {
         if (life==0 && gameOn == true) {
             gameOn=false;
             loseGame();
+            gotoScreen("EndScreen");
         }
     }
 
