@@ -187,19 +187,11 @@ public class BubbleDrop extends GameScreen {
             }
         }
         scoreLabel.remove();
-        final Actor backButton = ActorUtils.createButtonFromText(
-                "Final score: " + score + " Click to go to back to menu",
-                new Color(1, 1, 1, 1));
-        backButton.setPosition(0, stage.getViewport().getScreenHeight() - backButton.getHeight());
-        backButton.addListener(new ActorGestureListener() {
-            @Override
-            public void touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                backButton.remove();
-                gotoScreen("Menu");
+
             }
-        });
-        stage.addActor(backButton);
-    }
-}
+        }
+
+
+
 
 
